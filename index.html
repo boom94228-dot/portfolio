@@ -29,19 +29,21 @@
     .retro{font-family:"Press Start 2P", monospace}
 
     .wrap{max-width:1100px; margin:auto; padding:24px}
+
+    /* Header */
     header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px}
     .brand{display:flex; align-items:center; gap:14px}
     .logo{width:48px; height:48px; border-radius:14px; background:conic-gradient(from 210deg, var(--accent), var(--accent-2)); box-shadow:var(--glow); animation:rotate 6s linear infinite}
     @keyframes rotate{to{transform:rotate(1turn)}}
     h1{font-size:22px; margin:0}
+    .hud{display:flex; align-items:center; gap:10px; padding:8px 12px; border:1px solid var(--stroke); border-radius:12px; background:rgba(255,255,255,.05); box-shadow:var(--shadow)}
+    .led{width:8px; height:8px; border-radius:50%; background:var(--accent-3); box-shadow:0 0 6px var(--accent-3),0 0 12px var(--accent-3); animation:blink 1.5s infinite alternate}
+    @keyframes blink{0%{opacity:.5}100%{opacity:1}}
+
     .btn-cta{display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg, var(--accent-2), var(--accent)); color:#fff; font-weight:700; padding:10px 14px; border-radius:12px; border:none; box-shadow:var(--glow); transition:transform .2s ease, box-shadow .2s ease}
     .btn-cta:hover{transform:translateY(-2px); box-shadow:0 0 16px rgba(99,102,241,.8),0 0 24px rgba(14,165,233,.6)}
     .btn-ghost{background:transparent; border:1px solid var(--stroke); border-radius:10px; padding:6px 10px; font-size:12px; cursor:pointer; color:var(--text); transition:all .25s ease}
     .btn-ghost:hover{background:var(--accent); color:#fff; box-shadow:0 0 12px var(--accent)}
-
-    .hud{display:flex; align-items:center; gap:10px; padding:8px 12px; border:1px solid var(--stroke); border-radius:12px; background:rgba(255,255,255,.05); box-shadow:var(--shadow)}
-    .led{width:8px; height:8px; border-radius:50%; background:var(--accent-3); box-shadow:0 0 6px var(--accent-3),0 0 12px var(--accent-3); animation:blink 1.5s infinite alternate}
-    @keyframes blink{0%{opacity:.5}100%{opacity:1}}
 
     /* INTRO (รูปซ้าย-ข้อความขวา) */
     .intro-section{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:40px; margin-bottom:40px}
@@ -95,20 +97,24 @@
     .contact a{background:var(--panel); border:1px solid var(--stroke); padding:8px 12px; border-radius:999px; font-size:13px; transition:all .25s ease}
     .contact a:hover{background:var(--accent); color:#fff; box-shadow:0 0 10px var(--accent)}
 
-    /* มือถือทั่วไป */
+    /* มือถือทั่วไป: จัด header เป็นคอลัมน์ + กึ่งกลางทุกอย่าง + ปรับขนาดให้พอดี */
     @media (max-width: 640px){
       .wrap{padding:20px}
-      h1{font-size:20px}
+      header{flex-direction:column; align-items:center; text-align:center; gap:12px}
+      .brand{flex-direction:column; align-items:center; gap:8px}
+      .logo{width:60px; height:60px; margin-bottom:6px}
+      h1{font-size:20px; line-height:1.25; text-align:center; max-width:92%; word-break:break-word}
+      .hud{justify-content:center; font-size:12px}
       .btn-cta{border-radius:10px}
-      .gallery-grid{grid-template-columns:1fr}
+
       .intro-section{flex-direction:column; text-align:center}
       .intro-photo{width:240px; height:240px}
+      .gallery-grid{grid-template-columns:1fr}
     }
+
     /* มือถือจอเล็กมาก */
     @media (max-width: 480px){
-      header{align-items:flex-start}
-      h1{font-size:18px; line-height:1.2; word-break:break-word}
-      .hud{padding:6px 10px; font-size:12px}
+      h1{font-size:18px}
       .btn-cta{padding:8px 12px; font-size:13px; box-shadow:none}
       .intro-photo{width:220px; height:220px}
       .intro-text h2{font-size:30px}
@@ -248,7 +254,7 @@
     </footer>
   </div>
 
-  <!-- LIGHTBOX (รองรับรูปและ PDF) -->
+  <!-- LIGHTBOX (รูป + PDF) -->
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Preview dialog">
     <div class="lightbox-dialog">
       <div class="lightbox-head">
@@ -259,10 +265,7 @@
         <button class="close-btn" id="lb-close" aria-label="Close preview">Close</button>
       </div>
 
-      <!-- แสดงรูป -->
       <img id="lb-img" class="lightbox-img" alt="ภาพขยาย" style="display:none"/>
-
-      <!-- แสดง PDF -->
       <iframe id="lb-pdf" class="lightbox-pdf" title="PDF preview" style="display:none"></iframe>
     </div>
   </div>
@@ -309,7 +312,6 @@
       document.body.style.overflow='';
     }
 
-    // คลิกภาพในแกลเลอรี -> เปิดรูป
     document.addEventListener('click', e => {
       const img = e.target.closest('.thumb img');
       if(img){
@@ -321,18 +323,16 @@
         return;
       }
 
-      // ปุ่ม Transcript -> เปิด PDF
       const btn = e.target.closest('[data-grade]');
       if(btn){
         e.preventDefault();
-        const pdfPath = 'assets/grades.pdf'; // <-- เปลี่ยนชื่อได้ตามไฟล์จริง
+        const pdfPath = 'assets/grades.pdf'; // เปลี่ยนชื่อได้ตามไฟล์จริง
         try{ openLBPdf(pdfPath, 'Transcript / ใบแสดงผลการเรียน'); }
         catch{ window.open(pdfPath, '_blank'); }
         return;
       }
     });
 
-    // ปิดด้วยคลิกพื้นหลัง/ปุ่ม/ESC
     lb.addEventListener('click', e => { if(e.target === lb) closeLB(); });
     lbClose.addEventListener('click', closeLB);
     window.addEventListener('keydown', e => { if(e.key === 'Escape' && lb.getAttribute('aria-hidden') === 'false') closeLB(); });
