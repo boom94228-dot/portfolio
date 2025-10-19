@@ -95,14 +95,26 @@
     .contact a{background:var(--panel); border:1px solid var(--stroke); padding:8px 12px; border-radius:999px; font-size:13px; transition:all .25s ease}
     .contact a:hover{background:var(--accent); color:#fff; box-shadow:0 0 10px var(--accent)}
 
-    @media (max-width:800px){
-      .grid-info{grid-template-columns:repeat(2,1fr)}
+    /* มือถือทั่วไป */
+    @media (max-width: 640px){
+      .wrap{padding:20px}
+      h1{font-size:20px}
+      .btn-cta{border-radius:10px}
+      .gallery-grid{grid-template-columns:1fr}
       .intro-section{flex-direction:column; text-align:center}
       .intro-photo{width:240px; height:240px}
     }
-    @media (max-width:640px){
-      .grid-info{grid-template-columns:1fr}
-      .gallery-grid{grid-template-columns:1fr}
+    /* มือถือจอเล็กมาก */
+    @media (max-width: 480px){
+      header{align-items:flex-start}
+      h1{font-size:18px; line-height:1.2; word-break:break-word}
+      .hud{padding:6px 10px; font-size:12px}
+      .btn-cta{padding:8px 12px; font-size:13px; box-shadow:none}
+      .intro-photo{width:220px; height:220px}
+      .intro-text h2{font-size:30px}
+      .intro-text .role{font-size:18px}
+      .intro-text p{font-size:14px}
+      .buttons{gap:10px}
     }
   </style>
 </head>
@@ -172,7 +184,6 @@
     <!-- WORKS -->
     <h2 class="section-title">Works / Projects</h2>
     <section class="gallery-grid" id="works">
-      <!-- ตัวอย่างงาน (เหมือนเดิม) -->
       <figure class="item">
         <div class="thumb"><img src="images/work-01.jpg" alt="Work 1"/></div>
         <figcaption class="caption">
@@ -279,7 +290,6 @@
     function openLBPdf(pdfSrc, title = '', sub = ''){
       lbImg.style.display = 'none';
       lbPdf.style.display = 'block';
-      // ใส่พารามิเตอร์ให้พอดีความกว้าง และปิดแถบนำทางของบาง viewer
       lbPdf.src = `${pdfSrc}#navpanes=0&toolbar=1&view=FitH`;
       lbTitle.textContent = title;
       lbSub.textContent = sub || 'เลื่อนเพื่ออ่าน • ใช้ปุ่มดาวน์โหลดจาก viewer ได้';
@@ -316,11 +326,8 @@
       if(btn){
         e.preventDefault();
         const pdfPath = 'assets/grades.pdf'; // <-- เปลี่ยนชื่อได้ตามไฟล์จริง
-        try{
-          openLBPdf(pdfPath, 'Transcript');
-        }catch{
-          window.open(pdfPath, '_blank'); // fallback
-        }
+        try{ openLBPdf(pdfPath, 'Transcript / ใบแสดงผลการเรียน'); }
+        catch{ window.open(pdfPath, '_blank'); }
         return;
       }
     });
