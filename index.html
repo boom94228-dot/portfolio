@@ -329,8 +329,8 @@
       const btn = e.target.closest('[data-grade]');
       if(btn){
         e.preventDefault();
-        const pdfPath = 'assets/grades.pdf'; // <-- เปลี่ยนชื่อได้ตามไฟล์จริง
-        try{ openLBPdf(pdfPath, 'Transcript / ใบแสดงผลการเรียน'); }
+        const pdfPath = 'assets/grades.pdf';
+        try{ openLBPdf(pdfPath, 'Transcript'); }
         catch{ window.open(pdfPath, '_blank'); }
         return;
       }
