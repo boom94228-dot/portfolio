@@ -51,6 +51,7 @@
     .intro-text h2{font-size:36px; margin:0}
     .intro-text .role{font-size:22px; font-weight:700; color:var(--accent); margin:8px 0 16px}
     .intro-text p{font-size:15px; color:var(--muted); line-height:1.6}
+    .intro-text ul{margin:8px 0 0 18px; padding-left:18px; font-size:14px; color:var(--muted); line-height:1.6}
     .buttons{margin-top:20px; display:flex; gap:12px}
 
     /* BIO CARDS — ใช้ 2 คอลัมน์เพื่อให้ Education คู่กับ Contact */
@@ -132,8 +133,8 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div>
-          <h1>Atsadawut Waen-ngern / <span class="retro" style="font-size:16px">GAME DEV</span> & Programmer — Portfolio</h1>
-          <div class="hud mono"><span class="led"></span><span>Build v1.4</span><span>•</span><span>Unity (C#)</span></div>
+          <h1>อัษฎาวุฒิ แหวนเงิน / <span class="retro" style="font-size:16px"></span> Portfolio</h1>
+          <div class="hud mono"><span class="led"></span><span>Build v1.4</span><span></span><span></span></div>
         </div>
       </div>
       <a class="btn-cta" href="assets/Resume.pdf" download>Download Resume (PDF)</a>
@@ -145,9 +146,18 @@
         <img src="images/profile.png" alt="Atsadawut portrait" class="intro-photo">
       </div>
       <div class="intro-text">
-        <h2>Hello, I'm Atsadawut 👋</h2>
-        <h3 class="role">Game Developer & Programmer</h3>
-        <p>I'm a computer engineering student passionate about game development using Unity. I focus on gameplay systems, tools, and clean, high-quality code with strong attention to performance and accessibility.</p>
+        <h2>สวัสดีครับ ผม อัษฎาวุฒิ 👋</h2>
+        <p>ผมเป็นนักศึกษาวิศวกรรมคอมพิวเตอร์ที่สนใจการพัฒนา Software, Web Application และโครงสร้างพื้นฐานด้าน DevOps มีพื้นฐานทั้งด้าน Programming, Cloud และการทำงานแบบทีมในสภาพแวดล้อมที่เปลี่ยนแปลงรวดเร็ว โดยมีทักษะและประสบการณ์ดังนี้:</p>
+        <ul>
+          <li>มีความสามารถการเขียนโปรแกรมหลายภาษา เช่น Python และ JavaScript</li>
+          <li>มีประสบการณ์ในการพัฒนาและดีพลอยเว็บแอปพลิเคชันด้วยเฟรมเวิร์ก เช่น React และ Angular</li>
+          <li>มีความเข้าใจแนวปฏิบัติที่ดีในการพัฒนาซอฟต์แวร์ (Software Best Practices) เช่น การใช้ Version Control การทดสอบระบบ และการทำ Code Review</li>
+          <li>คุ้นเคยกับบริการคลาวด์ เช่น AWS หรือ Google Cloud และมีประสบการณ์ในการตั้งค่าและดูแลโครงสร้างระบบโดยใช้เครื่องมืออย่าง Docker และ Kubernetes</li>
+          <li>มีทักษะและประสบการณ์ในการสร้างเกมด้วย Unity</li>
+          <li>มีทักษะการแก้ปัญหาที่ดี สามารถวิเคราะห์และจัดการกับปัญหาทางเทคนิคที่ซับซ้อนได้</li>
+          <li>มีทักษะการสื่อสารที่ดี และสามารถทำงานได้อย่างมีประสิทธิภาพในสภาพแวดล้อมที่มีการเปลี่ยนแปลงรวดเร็ว</li>
+          <li>มีความต้องการเรียนรู้ตลอดเวลา ติดตามเทรนด์และเทคโนโลยีใหม่ ๆ อยู่เสมอ เพื่อนำมาพัฒนาทักษะและสร้างคุณค่าให้กับโปรเจกต์ที่รับผิดชอบ</li>
+        </ul>
       </div>
     </section>
 
@@ -155,23 +165,34 @@
     <section class="bio">
       <div class="grid-info">
         <div class="card">
-          <h3>Main Skill</h3>
+          <h3>Programming Languages</h3>
           <div class="chips mono">
-            <span class="chip">C#</span><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Node.js</span>
+            <span class="chip">Python</span>
+            <span class="chip">GO</span>
+            <span class="chip">C#</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">HTML</span>
+            <span class="chip">PHP</span>
+            <span class="chip">CSS</span>
           </div>
         </div>
 
         <div class="card">
-          <h3>Tools</h3>
+          <h3>Tools & Software</h3>
           <div class="chips mono">
-            <span class="chip">Unity</span><span class="chip">Git/GitHub</span><span class="chip">Shader Graph</span><span class="chip">Cinemachine</span><span class="chip">URP</span><span class="chip">VS Code</span>
+            <span class="chip">Visual Studio Code</span>
+            <span class="chip">Git/GitHub</span>
+            <span class="chip">GitHub Action</span>
+            <span class="chip">Docker</span>
+            <span class="chip">AWS</span>
+            <span class="chip">Google Cloud</span>
           </div>
         </div>
-
         <!-- Education วางก่อน Contact เพื่อให้จับคู่กันใน grid 2 คอลัมน์ -->
         <div class="card">
           <h3>Education</h3>
-          <p class="muted">Pibulsongkram Rajabhat University — Bachelor of Engineering in Computer Engineering</p>
+          <p class="muted">มหาลัยราชภัฏพิบูลสงคราม - วิศวกรรมคอมพิวเตอร์</p>
           <div class="chips"><button class="btn-ghost" data-grade>Transcript</button></div>
         </div>
 
